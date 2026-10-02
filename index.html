@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ANGELO_OS // Birthday</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#05070a;
+    color:#f1f1f1;
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+/* MATRIX BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-3;
+
+    background:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+
+    background-size:40px 40px;
+
+    animation:gridMove 12s linear infinite;
+}
+
+@keyframes gridMove{
+    from{
+        background-position:0 0;
+    }
+
+    to{
+        background-position:40px 40px;
+    }
+}
+
+/* SCANLINES */
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:100;
+    pointer-events:none;
+
+    background:
+    repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(255,255,255,.018) 4px
+    );
+}
+
+/* MUSIC BUTTON */
+
+.music-button{
+    position:fixed;
+    top:18px;
+    right:18px;
+
+    z-index:200;
+
+    padding:10px 15px;
+
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(5,7,10,.85);
+
+    color:white;
+
+    border-radius:8px;
+
+    font-family:"JetBrains Mono",monospace;
+    font-size:12px;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(8px);
+
+    transition:.3s;
+}
+
+.music-button:hover{
+    background:white;
+    color:#05070a;
+}
+
+/* MAIN */
+
+main{
+    width:100%;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:30px 20px;
+
+    position:relative;
+}
+
+.hero-content{
+    width:min(900px,100%);
+}
+
+.system-label{
+    font-family:"JetBrains Mono",monospace;
+    font-size:12px;
+    letter-spacing:3px;
+
+    opacity:.55;
+
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-family:"Orbitron",sans-serif;
+
+    font-size:clamp(45px,10vw,100px);
+
+    line-height:1;
+
+    letter-spacing:4px;
+
+    margin-bottom:20px;
+
+    text-shadow:
+    3px 0 #ff003c,
+    -3px 0 #00e5ff;
+
+    animation:glitch 2.5s infinite;
+}
+
+@keyframes glitch{
+
+    0%,90%,100%{
+        transform:none;
+    }
+
+    91%{
+        transform:translate(-3px,2px);
+    }
+
+    93%{
+        transform:translate(3px,-2px);
+    }
+
+    95%{
+        transform:translate(-2px,0);
+    }
+}
+
+.hero h2{
+    font-family:"Orbitron",sans-serif;
+    font-size:clamp(18px,4vw,32px);
+    margin-bottom:25px;
+}
+
+.hero p{
+    max-width:600px;
+    margin:auto;
+
+    color:#aeb4bc;
+
+    line-height:1.8;
+
+    font-size:15px;
+}
+
+.start-button{
+    margin-top:35px;
+
+    padding:15px 28px;
+
+    border:1px solid rgba(255,255,255,.35);
+
+    background:transparent;
+
+    color:white;
+
+    font-family:"JetBrains Mono",monospace;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.start-button:hover{
+    background:white;
+    color:#05070a;
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,.25);
+}
+
+/* VIDEO SECTION */
+
+.videos{
+    width:min(1000px,92%);
+
+    margin:0 auto;
+
+    padding:80px 0 100px;
+}
+
+.section-header{
+    margin-bottom:50px;
+}
+
+.section-code{
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:12px;
+
+    color:#8e969f;
+
+    margin-bottom:12px;
+}
+
+.section-header h2{
+    font-family:"Orbitron",sans-serif;
+
+    font-size:clamp(25px,5vw,42px);
+
+    margin-bottom:15px;
+}
+
+.section-header p{
+    color:#9da4ad;
+
+    line-height:1.7;
+}
+
+/* VIDEO CARD */
+
+.video-card{
+    margin-bottom:70px;
+
+    padding:20px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.055),
+        rgba(255,255,255,.015)
+    );
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:14px;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.35);
+
+    position:relative;
+}
+
+.video-card::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:45px;
+    height:3px;
+
+    background:white;
+
+    box-shadow:
+    55px 0 rgba(255,0,60,.7),
+    110px 0 rgba(0,229,255,.7);
+}
+
+.video-label{
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:12px;
+
+    color:#89919a;
+
+    margin:10px 0 15px;
+}
+
+.video-title{
+    font-family:"Orbitron",sans-serif;
+
+    font-size:20px;
+
+    margin-bottom:18px;
+}
+
+.video-wrapper{
+    width:100%;
+
+    overflow:hidden;
+
+    border-radius:9px;
+
+    background:#000;
+
+    border:1px solid rgba(255,255,255,.1);
+}
+
+video{
+    width:100%;
+
+    display:block;
+
+    max-height:650px;
+
+    background:#000;
+}
+
+.video-note{
+    margin-top:15px;
+
+    color:#888f98;
+
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:11px;
+}
+
+/* MESSAGE */
+
+.message{
+    width:min(800px,90%);
+
+    margin:20px auto 120px;
+
+    padding:50px 30px;
+
+    text-align:center;
+
+    border-top:1px solid rgba(255,255,255,.12);
+    border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.message-code{
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:11px;
+
+    color:#777f88;
+
+    margin-bottom:20px;
+}
+
+.message h2{
+    font-family:"Orbitron",sans-serif;
+
+    font-size:28px;
+
+    margin-bottom:25px;
+}
+
+.message p{
+    color:#b6bcc3;
+
+    line-height:2;
+
+    font-size:15px;
+}
+
+/* FINAL */
+
+.final{
+    min-height:70vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:50px 20px;
+}
+
+.final-box{
+    max-width:700px;
+}
+
+.final-box .terminal{
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:12px;
+
+    color:#747c85;
+
+    margin-bottom:20px;
+}
+
+.final-box h2{
+    font-family:"Orbitron",sans-serif;
+
+    font-size:clamp(28px,7vw,60px);
+
+    margin-bottom:20px;
+}
+
+.final-box p{
+    color:#a8afb7;
+
+    line-height:1.8;
+}
+
+.cake{
+    font-size:55px;
+
+    margin-bottom:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .hero{
+        min-height:90vh;
+    }
+
+    .hero h1{
+        letter-spacing:1px;
+    }
+
+    .videos{
+        padding-top:50px;
+    }
+
+    .video-card{
+        padding:12px;
+        margin-bottom:45px;
+    }
+
+    .message{
+        padding:40px 20px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- BACKGROUND MUSIC -->
+
+<audio id="birthdayMusic" loop preload="auto">
+    <source src="Birthday.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- MUSIC BUTTON -->
+
+<button class="music-button" id="musicButton">
+    ♪ MUSIC OFF
+</button>
+
+
+<main>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="system-label">
+            ANGELO_OS // BIRTHDAY_SYSTEM // ONLINE
+        </div>
+
+        <h1>HAPPY<br>BIRTHDAY</h1>
+
+        <h2>ANGELO</h2>
+
+        <p>
+            A small digital birthday archive made especially for you.
+            No complicated files. No hidden system.
+            Just birthday videos, music, and a little message.
+        </p>
+
+        <button
+            class="start-button"
+            onclick="startBirthday()"
+        >
+            [ START BIRTHDAY ]
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- VIDEOS -->
+
+<section class="videos" id="videos">
+
+    <div class="section-header">
+
+        <div class="section-code">
+            /ARCHIVE/VIDEO_MESSAGES
+        </div>
+
+        <h2>VIDEO ARCHIVE</h2>
+
+        <p>
+            Three little birthday messages.
+            Watch them in order or choose whichever one you want.
+        </p>
+
+    </div>
+
+
+
+    <!-- VIDEO 1 -->
+
+    <div class="video-card">
+
+        <div class="video-label">
+            FILE_01 // BIRTHDAY_MESSAGE
+        </div>
+
+        <div class="video-title">
+            For Angelo
+        </div>
+
+        <div class="video-wrapper">
+
+            <video
+                controls
+                playsinline
+                preload="metadata"
+            >
+
+                <source
+                    src="video1.mp4"
+                    type="video/mp4"
+                >
+
+                Your browser does not support video.
+
+            </video>
+
+        </div>
+
+        <div class="video-note">
+            STATUS: READY_TO_PLAY
+        </div>
+
+    </div>
+
+
+
+    <!-- VIDEO 2 -->
+
+    <div class="video-card">
+
+        <div class="video-label">
+            FILE_02 // SPECIAL_MESSAGE
+        </div>
+
+        <div class="video-title">
+            One More Message
+        </div>
+
+        <div class="video-wrapper">
+
+            <video
+                controls
+                playsinline
+                preload="metadata"
+            >
+
+                <source
+                    src="video2.mp4"
+                    type="video/mp4"
+                >
+
+                Your browser does not support video.
+
+            </video>
+
+        </div>
+
+        <div class="video-note">
+            STATUS: READY_TO_PLAY
+        </div>
+
+    </div>
+
+
+
+    <!-- VIDEO 3 -->
+
+    <div class="video-card">
+
+        <div class="video-label">
+            FILE_03 // FINAL_MESSAGE
+        </div>
+
+        <div class="video-title">
+            One Last Birthday Greeting
+        </div>
+
+        <div class="video-wrapper">
+
+            <video
+                controls
+                playsinline
+                preload="metadata"
+            >
+
+                <source
+                    src="video3.mp4"
+                    type="video/mp4"
+                >
+
+                Your browser does not support video.
+
+            </video>
+
+        </div>
+
+        <div class="video-note">
+            STATUS: FINAL_ARCHIVE
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- MESSAGE -->
+
+<section class="message">
+
+    <div class="message-code">
+        /SYSTEM/MESSAGE_FOR_ANGELO
+    </div>
+
+    <h2>Before You Go...</h2>
+
+    <p>
+        Happy birthday to someone who has become such a special
+        and important person in my life. 🤍
+        <br><br>
+
+        For almost 10 months, you've been patiently staying by my side
+        and trying to understand me, even during the moments when
+        I'm difficult to understand.
+        <br><br>
+
+        You've become someone I can lean on whenever everything
+        feels overwhelming. Your presence and the way you listen
+        mean more to me than you probably realize.
+        <br><br>
+
+        I hope God continues to guide you, protect you,
+        and bless you in everything you do.
+        I hope you achieve the things you dream about
+        and become the person you want to be.
+        <br><br>
+
+        Thank you for staying, understanding,
+        and simply being there.
+        <br><br>
+
+        I love you my Angelo. 🤍
+        <br><br>
+
+        Happy birthday again. 🎂
+    </p>
+
+</section>
+
+
+
+<!-- FINAL -->
+
+<section class="final">
+
+    <div class="final-box">
+
+        <div class="cake">
+            🎂
+        </div>
+
+        <div class="terminal">
+            SYSTEM_MESSAGE // ARCHIVE_COMPLETE
+        </div>
+
+        <h2>HAPPY 17TH, ANGELO</h2>
+
+        <p>
+            Birthday archive completed.<br>
+            Music still playing.<br>
+            Memories saved. 🤍
+        </p>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<script>
+
+/* MUSIC */
+
+const music =
+document.getElementById("birthdayMusic");
+
+const musicButton =
+document.getElementById("musicButton");
+
+let musicPlaying = false;
+
+
+/* START */
+
+function startBirthday(){
+
+    music.volume = 0.60;
+
+    music.play()
+    .then(function(){
+
+        musicPlaying = true;
+
+        musicButton.textContent =
+        "♪ MUSIC ON";
+
+    })
+    .catch(function(){
+
+        musicPlaying = false;
+
+        musicButton.textContent =
+        "♪ TAP FOR MUSIC";
+
+    });
+
+    document.getElementById("videos")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* MUSIC BUTTON */
+
+musicButton.addEventListener(
+"click",
+function(){
+
+    if(musicPlaying){
+
+        music.pause();
+
+        musicPlaying = false;
+
+        musicButton.textContent =
+        "♪ MUSIC OFF";
+
+    }
+
+    else{
+
+        music.volume = 0.60;
+
+        music.play()
+        .then(function(){
+
+            musicPlaying = true;
+
+            musicButton.textContent =
+            "♪ MUSIC ON";
+
+        });
+
+    }
+
+});
+
+
+/* VIDEO AUDIO */
+
+const videos =
+document.querySelectorAll("video");
+
+
+videos.forEach(function(video){
+
+    video.addEventListener(
+    "play",
+    function(){
+
+        /* Lower birthday music */
+
+        music.volume = 0.10;
+
+    });
+
+
+    video.addEventListener(
+    "pause",
+    function(){
+
+        if(musicPlaying){
+
+            music.volume = 0.60;
+
+        }
+
+    });
+
+
+    video.addEventListener(
+    "ended",
+    function(){
+
+        if(musicPlaying){
+
+            music.volume = 0.60;
+
+        }
+
+    });
+
+});
+
+
+/* PREVENT MULTIPLE VIDEOS */
+
+videos.forEach(function(currentVideo){
+
+    currentVideo.addEventListener(
+    "play",
+    function(){
+
+        videos.forEach(function(otherVideo){
+
+            if(otherVideo !== currentVideo){
+
+                otherVideo.pause();
+
+            }
+
+        });
+
+    });
+
+});
+
+
+</script>
+
+</body>
+  </html>
